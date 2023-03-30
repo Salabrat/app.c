@@ -1,25 +1,20 @@
+
 #include <stdio.h>
-int gcd (int a, int b);
+int factorial (int n);
 int main () {
-	printf ("Test v10.03: OK\n");
-	int a = 12;
-	int b = 16;
-	printf ("a = %d\n", a);
-	printf ("b = %d\n", b);
-	printf ("NOD (%d, %d) = ", a, b);
-	a = gcd(a, b);
-	printf ("NOD (%d)", a);
+	printf ("Test v10.04: OK\n");
+	int n = 6;
+	int a;
+	a = factorial(n);
+	printf ("%d! = %d", n, a);
 	return 0;
 }
 
-int gcd (int a, int b) {
-	while (a!=b) {
-		if (a>b) {
-			a -= b;
-		}
-		else {
-			b -= a;
-		}
+int factorial (int n) {
+	if (n <= 0) {
+		return 1;
 	}
-	return a;
+	else {
+		return n*factorial(n-1);
+	}
 }
