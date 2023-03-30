@@ -1,20 +1,10 @@
 
 #include <stdio.h>
-int factorial (int n);
+#define ARRAY_SIZE 1000000
 int main () {
-	printf ("Test v10.04: OK\n");
-	int n = 6;
-	int a;
-	a = factorial(n);
-	printf ("%d! = %d", n, a);
-	return 0;
-}
-
-int factorial (int n) {
-	if (n <= 0) {
-		return 1;
-	}
-	else {
-		return n*factorial(n-1);
-	}
-}
+      	printf ("ARRAY_SIZE: %d\n", ARRAY_SIZE);
+      	char v[ARRAY_SIZE];
+      	for (int i=0; i<ARRAY_SIZE; i++) {
+      	v[i]=i;}
+      	for (int i=0; i<ARRAY_SIZE; i++) {
+                	printf ("%5d", v[i]);}return 0;}
