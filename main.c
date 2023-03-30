@@ -1,24 +1,15 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+int fibo(int n){
+    if (n==1 || n==2) {
+        return 1;} 
+        else {
+        return fibo(n-1) + fibo(n-2);}}
 
-double areaTriangle(double a, double b, double c) {
-	double HalfPerimeter;
-	HalfPerimeter = (a + b + c)/2;
-	return sqrt(HalfPerimeter*(HalfPerimeter - a)*(HalfPerimeter - b)*(HalfPerimeter - c));
-}
-
-double sideTriangle(double x1, double y1, double x2, double y2) {
-	return sqrt((x2 - x1)*(x2 - x1)+(y2 - y1)*(y2 - y1));
-}	
-int main() {
-	double a;
-	double b;
-	double c;
-	double s;
-	a = sideTriangle(3.0, 3.0, 7.0, 7.0);
-	b = sideTriangle(7.0, 7.0, 10.0, 2.0);
-	c = sideTriangle(3.0, 3.0, 10.0, 2.0);
-	s = areaTriangle(a, b, c);
-	printf("Area of Triangle s: %6.2lf\n", s);
-	return 0;
-}
+int main(){
+    int a,b;
+    printf("Enter the number");
+    scanf("%d",&a);
+    b=fibo(a);
+    printf("The fibonacci number is %d",b);}
