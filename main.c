@@ -1,34 +1,21 @@
 
-#include <stdio.h>
-/*
-void readingData () {
-	printf ("Reading data OK...\n");
-}
-void calcData () {
-	printf ("Calc. data OK...\n");
-}
-void writeData () {
-	printf ("Write data OK...\n");
-}
-*/
-int readingData ();
-int calcData ();
-int writeData ();
-int main () {
-	printf ("Test v10.01: OK\n");
-	readingData ();
-	calcData ();
-	writeData ();  
-	return 0;
-}	
 
-	int readingData () {
-		printf ("Read Data OK...\n");
-		return 0;
+#include <stdio.h>
+int main () {
+	printf ("Test v10.03: OK\n");
+	int a = 12;
+	int b = 16;
+	printf ("a = %d\n", a);
+	printf ("b = %d\n", b);
+	printf ("NOD (%d, %d) = ", a, b);
+	while (a!=b) {
+		if (a>b) {
+			a -= b;
+		}
+		else {
+			b -= a;
+		}
 	}
-	int calcData () {
-		printf ("Calc Data OK...\n");
-	}
-	int writeData () {
-		printf ("Write Data OK...\n");
-	}
+	printf ("NOD (%d)", a);
+	return 0;
+}
