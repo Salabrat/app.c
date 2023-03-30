@@ -1,20 +1,19 @@
-//4. Напишите функцию, вычисляющую длину строки.
+//Задача 1. Создайте прототип программы с помощью 3-х //функций-заглушек. 
 
 #include <stdio.h>
-#include <string.h>
-#include <conio.h>
-size_t ustrlen(const char *);
-int main() {
-    char str[] = "Running of the time";
-    size_t size_str = strlen(str);
-    printf("std_size = %u\n", size_str);
-    size_str = ustrlen(str);
-    printf("usr_size = %u\n", size_str);
-    _getch();
-    return 0;
+void readingData () {
+	printf ("Reading data OK...\n");
 }
-size_t ustrlen(const char * p) {
-    size_t size = 0;
-    while (p[size++] != 0) { }
-    return --size;
+void calcData () {
+	printf ("Calc. data OK...\n");
+}
+void writeData () {
+	printf ("Write data OK...\n");
+}
+int main () {
+	printf ("Test v10.01: OK\n");
+	readingData ();
+	calcData ();
+	writeData ();
+	return 0;
 }
