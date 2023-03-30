@@ -1,6 +1,5 @@
-
-
 #include <stdio.h>
+int gcd (int a, int b);
 int main () {
 	printf ("Test v10.03: OK\n");
 	int a = 12;
@@ -8,6 +7,12 @@ int main () {
 	printf ("a = %d\n", a);
 	printf ("b = %d\n", b);
 	printf ("NOD (%d, %d) = ", a, b);
+	a = gcd(a, b);
+	printf ("NOD (%d)", a);
+	return 0;
+}
+
+int gcd (int a, int b) {
 	while (a!=b) {
 		if (a>b) {
 			a -= b;
@@ -16,6 +21,5 @@ int main () {
 			b -= a;
 		}
 	}
-	printf ("NOD (%d)", a);
-	return 0;
+	return a;
 }
