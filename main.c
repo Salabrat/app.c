@@ -1,13 +1,20 @@
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
-int obr(int n){
-    if (n==1) printf("Yes");
-     else if(n==2) printf("No");
-      else if(n==3) printf("Cancel");}
-int main(){
-    int a;
-    printf("Enter number 1,2 or 3 \n");
-    scanf("%d",&a);
-    obr(a);}
+//4. Напишите функцию, вычисляющую длину строки.
 
+#include <stdio.h>
+#include <string.h>
+#include <conio.h>
+size_t ustrlen(const char *);
+int main() {
+    char str[] = "Running of the time";
+    size_t size_str = strlen(str);
+    printf("std_size = %u\n", size_str);
+    size_str = ustrlen(str);
+    printf("usr_size = %u\n", size_str);
+    _getch();
+    return 0;
+}
+size_t ustrlen(const char * p) {
+    size_t size = 0;
+    while (p[size++] != 0) { }
+    return --size;
+}
