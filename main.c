@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-int fibo(int n){
-    if (n==1 || n==2) {
-        return 1;} 
-        else {
-        return fibo(n-1) + fibo(n-2);}}
-
+int obr(int n){
+    if (n==1) printf("Yes");
+     else if(n==2) printf("No");
+      else if(n==3) printf("Cancel");}
 int main(){
-    int a,b;
-    printf("Enter the number");
+    int a;
+    printf("Enter number 1,2 or 3 \n");
     scanf("%d",&a);
-    b=fibo(a);
-    printf("The fibonacci number is %d",b);}
+    obr(a);}
+
