@@ -1,39 +1,41 @@
+
 #include <stdio.h>
 
 int main() {
-    int arr1[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    int arr2[3][4];
-
+    int array[5][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}, {17, 18, 19, 20}};
+    int row_arrays[5][4] = {0};
+    int column_arrays[4][5] = {0};
     
-    int k = 0;
-    for (int i = 0; i < 3; i++) {
+    // заполнение одномерных массивов по строкам
+    for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 4; j++) {
-            arr2[i][j] = arr1[k++];
+            row_arrays[i][j] = array[i][0];
         }
     }
-
-    for (int i = 0; i < 3; i++) {
+    
+    // заполнение одномерных массивов по колонкам
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 5; j++) {
+            column_arrays[i][j] = array[0][i];
+        }
+    }
+    
+    // вывод массивов
+    printf("row arrays:\n");
+    for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 4; j++) {
-            printf("%d ", arr2[i][j]);
+            printf("%d ", row_arrays[i][j]);
         }
         printf("\n");
     }
-    printf("\n");
-
-    k = 0;
-    for (int j = 0; j < 4; j++) {
-        for (int i = 0; i < 3; i++) {
-            arr2[i][j] = arr1[k++];
-        }
-    }
-
-    // вывод массива arr2
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
-            printf("%d ", arr2[i][j]);
+    
+    printf("\ncolumn arrays:\n");
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", column_arrays[i][j]);
         }
         printf("\n");
     }
-
+    
     return 0;
 }
