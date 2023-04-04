@@ -1,30 +1,25 @@
-
-#define rows 10
-#define cols 10
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-int main(){
-int a[cols][rows];
-int i=0;
-int j=0;
-int sum_high=0,sum_low=0;
 
-for (i=0;i<cols;i++){
-  for (j=0;j<rows;j++){
-    a[i][j]=rand()%200-100;
-    printf(" %3d ",a[i][j]);}
-    printf("\n");}  
-printf("\n");
+int main() {
+    int array[3][5]; 
+    int array1[5] = {1, 2, 3, 4, 5}; 
 
-for (i=0;i<cols;i++){
-  for (j=0;j<rows;j++){
-     if(i>j){
-     sum_low=sum_low+a[i][j];}}}
-    printf("Sum of the lower numbers is %d\n",sum_low);
+    int array2[5] = {6, 7, 8, 9, 10}; 
 
-for (i=0;i<cols;i++){
-  for (j=0;j<rows;j++){
-     if(i<j){
-     sum_high=sum_high+a[i][j];}}}
-    printf("Sum of the higher numbers is %d\n",sum_high);}
+    int array3[5] = {11, 12, 13, 14, 15}; 
+
+    for (int i = 0; i < 5; i++) {
+        array[0][i] = array1[i];
+        array[1][i] = array2[i];
+        array[2][i] = array3[i];
+    }
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", array[i][j]);
+        }
+        printf("\n\n");
+    }
+
+    return 0;
+}
