@@ -1,29 +1,30 @@
-#define ROWS 4
-#define COLS 4
-#define MAXNUMBER 100
+
+#define rows 10
+#define cols 10
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 int main(){
-int m[ROWS][COLS] = {{11, 12, 13, 14},
-                     {21, 22, 23, 24},
-                     {31, 32, 33, 34},
-                     {41, 42, 43, 44}};
-int i=0,j=0;
-int min=MAXNUMBER,max=0;
-int a[COLS];
-for (j=0;j<ROWS;j++){
-  for (i=0;i<COLS;i++){
-    if (m[i][j]>max && j%2!=0){
-      max=m[i][j];
-      a[j]=max;}
-    if (m[i][j]<min && j%2==0){
-      min=m[i][j];
-      a[j]=min;}
-    printf(" %d",m[j][i]);}
-   min=MAXNUMBER;
-   max=0;
-  printf("\n");}
+int a[cols][rows];
+int i=0;
+int j=0;
+int sum_high=0,sum_low=0;
+
+for (i=0;i<cols;i++){
+  for (j=0;j<rows;j++){
+    a[i][j]=rand()%200-100;
+    printf(" %3d ",a[i][j]);}
+    printf("\n");}  
 printf("\n");
-for (j=0;j<ROWS;j++){
-   printf(" %d",a[j]);}}
+
+for (i=0;i<cols;i++){
+  for (j=0;j<rows;j++){
+     if(i>j){
+     sum_low=sum_low+a[i][j];}}}
+    printf("Sum of the lower numbers is %d\n",sum_low);
+
+for (i=0;i<cols;i++){
+  for (j=0;j<rows;j++){
+     if(i<j){
+     sum_high=sum_high+a[i][j];}}}
+    printf("Sum of the higher numbers is %d\n",sum_high);}
