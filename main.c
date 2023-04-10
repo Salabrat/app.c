@@ -1,41 +1,27 @@
-
 #include <stdio.h>
+#include <windows.h>
 
 int main() {
-    int array[5][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}, {17, 18, 19, 20}};
-    int row_arrays[5][4] = {0};
-    int column_arrays[4][5] = {0};
-    
-    // заполнение одномерных массивов по строкам
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 4; j++) {
-            row_arrays[i][j] = array[i][0];
-        }
+    WIN32_FIND_DATA file_data;
+    HANDLE file_handle;
+
+    const char* directory_path = "C:\\Users\\calab\\Documents"; // замените на свой путь
+    file_handle = FindFirstFile(directory_path, &file_data);
+
+    if (file_handle == INVALID_HANDLE_VALUE) {
+        printf("Error open catalog: %d\n", GetLastError());
+        return 1;
     }
-    
-    // заполнение одномерных массивов по колонкам
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 5; j++) {
-            column_arrays[i][j] = array[0][i];
-        }
-    }
-    
-    // вывод массивов
-    printf("row arrays:\n");
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 4; j++) {
-            printf("%d ", row_arrays[i][j]);
-        }
-        printf("\n");
-    }
-    
-    printf("\ncolumn arrays:\n");
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 5; j++) {
-            printf("%d ", column_arrays[i][j]);
-        }
-        printf("\n");
-    }
-    
+
+    do {
+        printf("File name: %s\n", file_data.cFileName);
+        printf("File atribute: %d\n", file_data.dwFileAttributes);
+    } while (FindNextFile(file_handle, &file_data) != 0);
+
+    FindClose(file_handle);
+
     return 0;
 }
+
+
+
