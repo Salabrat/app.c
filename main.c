@@ -1,31 +1,15 @@
-#include <stdio.h>
 #include <windows.h>
-#include <tlhelp32.h>
+#define STRLEN(x) (sizeof(x)/sizeof(TCHAR) - 1)
+const TCHAR szMsg[] = "What's your name?\n";
+int main() {
+	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+	DWORD dwCount = 0;
+	TCHAR szName[16];
 
-int main()
-{
-    HANDLE hProcessSnap;
-    PROCESSENTRY32 pe32;
-
-    hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-    if (hProcessSnap == INVALID_HANDLE_VALUE) {
-        printf("CreateToolhelp32Snapshot failed\n");
-        return 1;
-    }
-
-    pe32.dwSize = sizeof(PROCESSENTRY32);
-    if (!Process32First(hProcessSnap, &pe32)) {
-        printf("Process32First failed\n");
-        CloseHandle(hProcessSnap);
-        return 1;
-    }
-
-    printf("Process List:\n");
-    do {
-        printf("%-30s PID: %5d\n", pe32.szExeFile, pe32.th32ProcessID);
-    } while (Process32Next(hProcessSnap, &pe32));
-
-    CloseHandle(hProcessSnap);
-
-    return 0;
+	WriteConsole(hStdout, &szMsg, STRLEN(szMsg), &dwCount, NULL);
+	ReadConsole(hStdin, &szName, STRLEN(szName), &dwCount, NULL);
+	WriteConsole(hStdout, &szName, STRLEN(szName), &dwCount, NULL);
+	ExitProcess(0);
+return 0;
 }
