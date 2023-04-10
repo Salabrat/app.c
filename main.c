@@ -1,15 +1,34 @@
 #include <windows.h>
-#define STRLEN(x) (sizeof(x)/sizeof(TCHAR) - 1)
-const TCHAR szMsg[] = "What's your name?\n";
-int main() {
-	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
-	DWORD dwCount = 0;
-	TCHAR szName[16];
+#include <stdio.h>
 
-	WriteConsole(hStdout, &szMsg, STRLEN(szMsg), &dwCount, NULL);
-	ReadConsole(hStdin, &szName, STRLEN(szName), &dwCount, NULL);
-	WriteConsole(hStdout, &szName, STRLEN(szName), &dwCount, NULL);
-	ExitProcess(0);
-return 0;
+int main() {
+    WIN32_FIND_DATA findData;
+    HANDLE hFind;
+
+    // Получение имени текущего каталога
+    TCHAR currentDirectory[MAX_PATH];
+    GetCurrentDirectory(MAX_PATH, currentDirectory);
+
+    // Формирование шаблона поиска для текущего каталога
+    TCHAR searchPattern[MAX_PATH];
+    sprintf(searchPattern, "%s\\*", currentDirectory);
+
+    // Поиск первого файла
+    hFind = FindFirstFile(searchPattern, &findData);
+    if (hFind == INVALID_HANDLE_VALUE) {
+        printf("Failed to find files.\n");
+        return 1;
+    }
+
+    // Вывод списка файлов
+    do {
+        if (findData.dwFileAttributes != FILE_ATTRIBUTE_DIRECTORY) {
+            printf("%s\n", findData.cFileName);
+        }
+    } while (FindNextFile(hFind, &findData));
+
+    // Освобождение ресурсов
+    FindClose(hFind);
+
+    return 0;
 }
